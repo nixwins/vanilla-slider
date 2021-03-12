@@ -1,0 +1,21 @@
+@import 'vars';
+
+.slider{
+    width:$slider-width;
+    height: $slider-height;
+
+    .slide{
+        display:none;
+        width:100%;
+        
+        img{
+            width:100%;
+            object-fit: cover;
+        }
+    }
+
+    .active-slide{
+        display: flex;
+        color:$main-color;
+    }
+}
