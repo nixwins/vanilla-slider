@@ -3,19 +3,20 @@
 .slider{
     width:$slider-width;
     height: $slider-height;
-
-    .slide{
-        display:none;
+    margin-bottom: 20px;
+    overflow: hidden;
+    
+}
+.slide{
+    display:none;
+    width:100%;
+    
+    img{
         width:100%;
-        
-        img{
-            width:100%;
-            object-fit: cover;
-        }
+        object-fit: cover;
     }
+}
 
-    .active-slide{
-        display: flex;
-        color:$main-color;
-    }
+.current-slide{
+    display: flex;
 }

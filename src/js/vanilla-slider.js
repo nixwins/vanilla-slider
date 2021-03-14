@@ -1,61 +1,66 @@
+import VSOptions from './vs-options';
+
 class VanillaSlider{
     
 
-    constructor(sliderID, options){
+    constructor(sliderID, options = null){
 
-        if(options != null) this.options = options;
-        this.l(this.options)
         this.sliderID = sliderID;
+        this.options = new VSOptions(options).getOptions();
+
         this.init();
 
     }
 
     init(){
-        
-        this.initOptions();
+
         this.initSliderElements();
         this.initSliderStyles();  
     }
 
-    initOptions(){
-
-        if(this.options != null){
-
-            for(const [key, opt] of Object.entries(this.options)){
-
-                if(key == undefined || key == ''){
-
-                    this.options.slideClass = "slide";
-
-                }
-            }
-
-        }else{
-           
-            this.options = {
-                slideClass:'slide'
-            }
-        }
-        
-        
-        
-    }
+    
   
     initSliderElements(){
         
         this.sliderContainer =  document.getElementById(this.sliderID);
-        this.slides = document.querySelectorAll("#slider > div");
+        this.slides = document.querySelectorAll(`#${this.sliderID}>div`);
     }
 
     initSliderStyles(){
-          
-        this.l(this.slides)
+
           this.sliderContainer.classList.add("slider");
           for(const el of this.slides){
-              el.classList.add(this.options.slideClass)
+              el.classList.add(this.options.slideClass);
           }
 
     }
+
+    start(){
+
+        if(this.options.autoplay && this.options.infinty) this.startInfinity();
+        else this.startClickable();
+           
+    }
+
+    startInfinity(){
+
+        setInterval(()=>{
+
+            for(let i = 0; i < this.slides.length; i++){
+                this.slides[i].classList.remove("current-slide");
+          
+            }
+            
+            this.options.idx++;
+
+            if(this.options.idx == this.slides.length){ this.options.idx = 0; }
+
+            this.slides[this.options.idx].classList.add("current-slide");
+
+        }, this.options.timer);
+
+    }
+
 
     l(o){console.log(o)}
 }
