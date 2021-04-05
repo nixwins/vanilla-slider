@@ -1,0 +1,13 @@
+.vs-default{
+    animation-name:scaleY;
+    animation-duration: 1s;
+}
+
+@keyframes scaleY {
+    0%{
+        transform: scaleY(0.2);
+    }
+   100%{
+        transform: scaleY(1);
+    }
+}

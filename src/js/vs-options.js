@@ -1,33 +1,39 @@
 class VSOptions{
 
-    constructor(options){
+    constructor(sliderID, options){
 
         this.options = {
-            slideClass:'slide',
+            sliderID: sliderID,
+            sliderClass:'vs-slider',
+            slideClass:'vs-slide',
             autoplay:true,
             timer:2000,
             idx:0,
             infinty:true,
+            isCtrlEnable:true,
             animation:{
-                name:"default",
+                name:"vs-default",
                 durition:2
             }
         };
 
-        if(options !== null) this.setOptions(options);
+        if(options !== null && options !== undefined) this.setOptions(options);
     }
 
     setOptions(options){
-
+            //l(options)
             const optMap = new Map(Object.entries(options));
 
             optMap.forEach((v, k)=> {
-
+            
                 if(k !==  undefined && k !== null){
-                   this.options.k = v;
+                   this.options[k] = v;
+                   //l(v)
+                //    l(this.options)
                 }
 
             });
+            //l(this.options);
     }
 
     getOptions(){ return this.options; }
