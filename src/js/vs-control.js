@@ -1,24 +1,24 @@
 import VSOptions from './vs-options';
 
-class VSControl{
+class VSControl {
 
-    static setControl(options){
+    static setControl(options) {
 
         this.options = options;
         // l(this.options);
 
-        if(this.options.isCtrlEnable){
+        if (this.options.controlEnable) {
             VSControl.createButtons();
         }
 
         const btnLeft = document.querySelector(`#${this.options.sliderID}>.vs-btn-left`);
         const btnRight = document.querySelector(`#${this.options.sliderID}>.vs-btn-right`);
 
-        return { btnLeftEl:btnLeft, btnRightEl:btnRight, dots:"" };
+        return { btnLeftEl: btnLeft, btnRightEl: btnRight, dots: "" };
     }
 
-    static createButtons(){
-        
+    static createButtons() {
+
         const btnLeft = VSControl.create("button");
         // btnLeft.innerHTML = "&#8249;";
         btnLeft.classList.add("vs-btn-left");
@@ -33,11 +33,11 @@ class VSControl{
         sliderContainer.appendChild(btnRight);
     }
 
-    static createDots(){
+    static createDots() {
 
     }
 
-    static create(e){ return document.createElement(e);}
+    static create(e) { return document.createElement(e); }
 }
 
-export default(VSControl);
+export default (VSControl);
